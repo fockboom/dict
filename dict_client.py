@@ -1,4 +1,5 @@
 from socket import *
+import sys
 
 class Handle:
     def __init__(self):
@@ -15,8 +16,10 @@ class Handle:
         self.sock.send(b'test')
 
 
-    def not_login(self):
-        pass
+    def do_exit(self):
+        self.sock.send(b'E')
+        self.sock.close()
+        sys.exit("谢谢使用")
 
 
 
@@ -62,7 +65,7 @@ class DICTView:
             elif cmd == '2':
                 pass
             elif cmd == '3':
-                break
+                self.handle.do_exit()
             else:
                 print("请输入正确选项！")
 

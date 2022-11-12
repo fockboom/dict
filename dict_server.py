@@ -11,8 +11,8 @@ class Handle(Process):
     def run(self):
         while True:
             request=self.conn.recv(1024)
-            print(request)
-
+            if not request or request==b'E':
+                break
 
         self.db.close()
         self.conn.close()
